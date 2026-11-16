@@ -623,12 +623,14 @@
             </intent-filter>
         </receiver>
 
-        <!-- Tanix W2: USB 2.0 port mode bookkeeping at boot (no-op on other devices) -->
+        <!-- Tanix W2: USB 2.0 port mode at boot, front panel 12/24-hour format (no-op on other devices) -->
         <receiver
             android:name=".device.tanix.TanixBootReceiver"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.TIME_SET"/>
+                <action android:name="android.intent.action.LOCALE_CHANGED"/>
             </intent-filter>
         </receiver>
         <activity

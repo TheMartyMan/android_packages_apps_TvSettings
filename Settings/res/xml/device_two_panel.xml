@@ -55,10 +55,6 @@
         android:key="storage"
         android:title="@string/device_storage"/>
     <Preference
-        android:fragment="com.android.tv.settings.device.tanix.TanixDeviceFragment"
-        android:key="device_settings"
-        android:title="@string/tanix_device_settings"/>
-    <Preference
         android:icon="@drawable/ic_home"
         android:key="home"
         android:title="@string/system_home">
@@ -98,4 +94,9 @@
         android:fragment="com.android.tv.twopanelsettings.slices.SliceFragment"
         custom:isPreferenceVisible="false"
         custom:uri="@string/fastpair_slice_uri"/>
+    <Preference
+        android:fragment="com.android.tv.settings.device.tanix.TanixDeviceFragment"
+        android:icon="@drawable/ic_tanix_device"
+        android:key="device_settings"
+        android:title="@string/tanix_device_settings"/>
 </PreferenceScreen>

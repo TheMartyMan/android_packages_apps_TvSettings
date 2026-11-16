@@ -50,10 +50,6 @@
         android:key="storage"
         android:title="@string/device_storage"/>
     <Preference
-        android:fragment="com.android.tv.settings.device.tanix.TanixDeviceFragment"
-        android:key="device_settings"
-        android:title="@string/tanix_device_settings"/>
-    <Preference
         android:icon="@drawable/ic_home"
         android:key="home"
         android:title="@string/system_home">
@@ -106,4 +102,9 @@
         android:icon="@drawable/ic_restart_alt"
         android:key="reboot"
         android:title="@string/restart_button_label"/>
+    <Preference
+        android:fragment="com.android.tv.settings.device.tanix.TanixDeviceFragment"
+        android:icon="@drawable/ic_tanix_device"
+        android:key="device_settings"
+        android:title="@string/tanix_device_settings"/>
 </PreferenceScreen>

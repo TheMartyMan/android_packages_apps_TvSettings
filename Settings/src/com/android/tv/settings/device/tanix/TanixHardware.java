@@ -8,6 +8,7 @@ package com.android.tv.settings.device.tanix;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.SystemProperties;
+import android.text.format.DateFormat;
 import android.util.Log;
 
 import java.io.File;
@@ -81,6 +82,18 @@ public final class TanixHardware {
             return false;
         }
         return value.equals(SystemProperties.get(key, ""));
+    }
+
+    /**
+     * Makes the front panel clock follow Settings > System > Date and time: the explicit 12/24-hour
+     * choice, or the locale default when the user has not chosen (same rule as the status clock).
+     */
+    static void syncClockFormat(Context context) {
+        String wanted = DateFormat.is24HourFormat(context) ? "24" : "12";
+        if (wanted.equals(getProp(PROP_PANEL_FORMAT, "24"))) return;
+        if (!setVendorProp(PROP_PANEL_FORMAT, wanted)) {
+            Log.w(TAG, "cannot set the front panel clock format to " + wanted);
+        }
     }
 
     static boolean setRoot(boolean enabled) {

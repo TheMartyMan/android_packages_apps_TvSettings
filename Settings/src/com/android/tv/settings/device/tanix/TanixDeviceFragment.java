@@ -26,7 +26,9 @@ import java.util.concurrent.Executors;
 
 /**
  * Settings > System > Device settings on the Tanix W2: front panel clock, USB 2.0 port mode and
- * built-in root. Changes are applied immediately and reverted in the UI only if a write fails.
+ * built-in root. The clock's 12/24-hour format follows Settings > System > Date and time
+ * (see {@link TanixBootReceiver}). Changes are applied immediately and reverted in the UI only
+ * if a write fails.
  */
 @Keep
 public class TanixDeviceFragment extends SettingsPreferenceFragment
@@ -35,7 +37,6 @@ public class TanixDeviceFragment extends SettingsPreferenceFragment
     private static final String KEY_PANEL_ENABLED = "tanix_panel_enabled";
     private static final String KEY_PANEL_BRIGHTNESS = "tanix_panel_brightness";
     private static final String KEY_PANEL_BLINK = "tanix_panel_blink";
-    private static final String KEY_PANEL_FORMAT = "tanix_panel_format";
     private static final String KEY_USB_MODE = "tanix_usb_mode";
     private static final String KEY_ROOT = "tanix_root";
     private static final String KEY_RESTART = "tanix_restart";
@@ -49,7 +50,6 @@ public class TanixDeviceFragment extends SettingsPreferenceFragment
     private TwoStatePreference mPanelEnabled;
     private SeekBarPreference mPanelBrightness;
     private TwoStatePreference mPanelBlink;
-    private ListPreference mPanelFormat;
     private ListPreference mUsbMode;
     private TwoStatePreference mRoot;
     private Preference mRestart;
@@ -64,13 +64,12 @@ public class TanixDeviceFragment extends SettingsPreferenceFragment
         mPanelEnabled = findPreference(KEY_PANEL_ENABLED);
         mPanelBrightness = findPreference(KEY_PANEL_BRIGHTNESS);
         mPanelBlink = findPreference(KEY_PANEL_BLINK);
-        mPanelFormat = findPreference(KEY_PANEL_FORMAT);
         mUsbMode = findPreference(KEY_USB_MODE);
         mRoot = findPreference(KEY_ROOT);
         mRestart = findPreference(KEY_RESTART);
 
         for (Preference p : new Preference[] {mPanelEnabled, mPanelBrightness, mPanelBlink,
-                mPanelFormat, mUsbMode, mRoot}) {
+                mUsbMode, mRoot}) {
             p.setOnPreferenceChangeListener(this);
         }
         mRestart.setOnPreferenceClickListener(p -> {
@@ -104,7 +103,8 @@ public class TanixDeviceFragment extends SettingsPreferenceFragment
                 TanixHardware.getProp(TanixHardware.PROP_PANEL_ENABLED, "1")));
         int level;
         try {
-            level = Integer.parseInt(TanixHardware.getProp(TanixHardware.PROP_PANEL_BRIGHTNESS, "2"));
+            level = Integer.parseInt(
+                    TanixHardware.getProp(TanixHardware.PROP_PANEL_BRIGHTNESS, "2"));
         } catch (NumberFormatException e) {
             level = 2;
         }
@@ -112,8 +112,6 @@ public class TanixDeviceFragment extends SettingsPreferenceFragment
         mPanelBrightness.setValue(Math.max(0, Math.min(7, level)) + 1);
         mPanelBlink.setChecked(!"0".equals(
                 TanixHardware.getProp(TanixHardware.PROP_PANEL_BLINK, "1")));
-        mPanelFormat.setValue("12".equals(
-                TanixHardware.getProp(TanixHardware.PROP_PANEL_FORMAT, "24")) ? "12" : "24");
     }
 
     private void updateRoot() {
@@ -162,9 +160,6 @@ public class TanixDeviceFragment extends SettingsPreferenceFragment
                 return true;
             case KEY_PANEL_BLINK:
                 writeVendorProp(TanixHardware.PROP_PANEL_BLINK, (Boolean) newValue ? "1" : "0");
-                return true;
-            case KEY_PANEL_FORMAT:
-                writeVendorProp(TanixHardware.PROP_PANEL_FORMAT, (String) newValue);
                 return true;
             case KEY_USB_MODE:
                 writeUsbMode(USB_DEVICE.equals(newValue)
