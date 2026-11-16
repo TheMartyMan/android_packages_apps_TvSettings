@@ -65,6 +65,11 @@
         android:key="storage"
         android:title="@string/device_storage"/>
     <Preference
+        android:key="device_settings"
+        android:title="@string/device_device_settings">
+        <intent android:action="org.lineageos.settings.device.DEVICE_SETTINGS"/>
+    </Preference>
+    <Preference
         android:icon="@drawable/ic_home"
         android:key="home"
         android:title="@string/system_home">

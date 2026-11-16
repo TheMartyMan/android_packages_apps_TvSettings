@@ -239,6 +239,8 @@
     <string name="device_apps">Applications</string>
     <!-- Preference which shows storage status. [CHAR LIMIT=50] -->
     <string name="device_storage">Storage</string>
+    <!-- Title of the entry that opens the device-specific settings (front panel, USB port mode, root) [CHAR LIMIT=50] -->
+    <string name="device_device_settings">Device settings</string>
     <!-- Preference which shows reset settings. [CHAR LIMIT=50] -->
     <string name="device_reset">Factory reset</string>
     <!-- Preference which manages backup settings. [CHAR LIMIT=50] -->

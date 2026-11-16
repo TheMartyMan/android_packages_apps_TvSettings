@@ -93,6 +93,8 @@ public class DevicePrefFragment extends SettingsPreferenceFragment implements
     private static final String KEY_SOUNDS_SWITCH = "sound_effects_switch";
     private static final String KEY_GOOGLE_SETTINGS = "google_settings";
     private static final String KEY_HOME_SETTINGS = "home";
+    // Device-specific settings screen (shown only when a system app handles the intent)
+    private static final String KEY_DEVICE_SETTINGS = "device_settings";
     private static final String KEY_REBOOT = "reboot";
     private static final String KEY_MIC = "microphone";
     private static final String KEY_CAMERA = "camera";
@@ -206,6 +208,7 @@ public class DevicePrefFragment extends SettingsPreferenceFragment implements
         hideIfIntentUnhandled(findPreference(KEY_HOME_SETTINGS));
         hideIfIntentUnhandled(findPreference(KEY_CAST_SETTINGS));
         hideIfIntentUnhandled(findPreference(KEY_USAGE));
+        hideIfIntentUnhandled(findPreference(KEY_DEVICE_SETTINGS));
         return super.onCreateView(inflater, container, savedInstanceState);
     }
 
