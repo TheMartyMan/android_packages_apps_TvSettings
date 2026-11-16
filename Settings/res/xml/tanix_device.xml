@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+     Tanix W2 device settings (com.android.tv.settings.device.tanix.TanixDeviceFragment).
+     Nothing is persisted in SharedPreferences: values live in system properties / U-Boot env.
+-->
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:title="@string/tanix_device_settings">
+
+    <PreferenceCategory
+        android:key="tanix_panel_category"
+        android:title="@string/tanix_panel_category">
+
+        <com.android.tv.settings.widget.SwitchWithSoundPreference
+            android:key="tanix_panel_enabled"
+            android:persistent="false"
+            android:summary="@string/tanix_panel_enabled_summary"
+            android:title="@string/tanix_panel_enabled_title" />
+
+        <SeekBarPreference
+            android:dependency="tanix_panel_enabled"
+            android:key="tanix_panel_brightness"
+            android:max="8"
+            android:persistent="false"
+            android:title="@string/tanix_panel_brightness_title"
+            app:adjustable="true"
+            app:min="1"
+            app:showSeekBarValue="true" />
+
+        <com.android.tv.settings.widget.SwitchWithSoundPreference
+            android:dependency="tanix_panel_enabled"
+            android:key="tanix_panel_blink"
+            android:persistent="false"
+            android:summary="@string/tanix_panel_blink_summary"
+            android:title="@string/tanix_panel_blink_title" />
+
+        <ListPreference
+            android:dependency="tanix_panel_enabled"
+            android:dialogTitle="@string/tanix_panel_format_title"
+            android:entries="@array/tanix_panel_format_entries"
+            android:entryValues="@array/tanix_panel_format_values"
+            android:key="tanix_panel_format"
+            android:persistent="false"
+            android:summary="%s"
+            android:title="@string/tanix_panel_format_title" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="tanix_usb_category"
+        android:title="@string/tanix_usb_category">
+
+        <ListPreference
+            android:dialogTitle="@string/tanix_usb_mode_title"
+            android:entries="@array/tanix_usb_mode_entries"
+            android:entryValues="@array/tanix_usb_mode_values"
+            android:key="tanix_usb_mode"
+            android:persistent="false"
+            android:title="@string/tanix_usb_mode_title" />
+
+        <Preference
+            android:key="tanix_restart"
+            android:summary="@string/tanix_restart_summary"
+            android:title="@string/tanix_restart_title" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="tanix_system_category"
+        android:title="@string/tanix_system_category">
+
+        <com.android.tv.settings.widget.SwitchWithSoundPreference
+            android:key="tanix_root"
+            android:persistent="false"
+            android:summaryOff="@string/tanix_root_summary_off"
+            android:summaryOn="@string/tanix_root_summary_on"
+            android:title="@string/tanix_root_title" />
+    </PreferenceCategory>
+</PreferenceScreen>

@@ -62,6 +62,7 @@ import com.android.tv.settings.customization.CustomizationConstants;
 import com.android.tv.settings.customization.Partner;
 import com.android.tv.settings.customization.PartnerPreferencesMerger;
 import com.android.tv.settings.device.eco.PowerAndEnergyFragment;
+import com.android.tv.settings.device.tanix.TanixHardware;
 import com.android.tv.settings.inputmethod.InputMethodHelper;
 import com.android.tv.settings.overlay.FlavorUtils;
 import com.android.tv.settings.privacy.PrivacyToggle;
@@ -93,7 +94,7 @@ public class DevicePrefFragment extends SettingsPreferenceFragment implements
     private static final String KEY_SOUNDS_SWITCH = "sound_effects_switch";
     private static final String KEY_GOOGLE_SETTINGS = "google_settings";
     private static final String KEY_HOME_SETTINGS = "home";
-    // Device-specific settings screen (shown only when a system app handles the intent)
+    // Tanix W2 device settings (front panel, USB 2.0 port mode, root); see device/tanix
     private static final String KEY_DEVICE_SETTINGS = "device_settings";
     private static final String KEY_REBOOT = "reboot";
     private static final String KEY_MIC = "microphone";
@@ -208,7 +209,10 @@ public class DevicePrefFragment extends SettingsPreferenceFragment implements
         hideIfIntentUnhandled(findPreference(KEY_HOME_SETTINGS));
         hideIfIntentUnhandled(findPreference(KEY_CAST_SETTINGS));
         hideIfIntentUnhandled(findPreference(KEY_USAGE));
-        hideIfIntentUnhandled(findPreference(KEY_DEVICE_SETTINGS));
+        final Preference deviceSettingsPref = findPreference(KEY_DEVICE_SETTINGS);
+        if (deviceSettingsPref != null) {
+            deviceSettingsPref.setVisible(TanixHardware.isSupported());
+        }
         return super.onCreateView(inflater, container, savedInstanceState);
     }
 

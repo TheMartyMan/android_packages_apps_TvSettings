@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Device settings (Tanix W2) -->
+    <string name="tanix_device_settings">Device settings</string>
+
+    <string name="tanix_panel_category">Front panel display</string>
+    <string name="tanix_panel_enabled_title">Clock display</string>
+    <string name="tanix_panel_enabled_summary">Show the time on the front panel</string>
+    <string name="tanix_panel_brightness_title">Brightness</string>
+    <string name="tanix_panel_blink_title">Blinking colon</string>
+    <string name="tanix_panel_blink_summary">Blink the colon between hours and minutes every second</string>
+    <string name="tanix_panel_format_title">Time format</string>
+    <string name="tanix_panel_format_24">24-hour (20:30)</string>
+    <string name="tanix_panel_format_12">12-hour (08:30)</string>
+
+    <string name="tanix_usb_category">USB</string>
+    <string name="tanix_usb_mode_title">USB 2.0 port mode</string>
+    <string name="tanix_usb_mode_device">Device mode</string>
+    <string name="tanix_usb_mode_host">Host mode</string>
+    <string name="tanix_usb_mode_device_summary">Connect the box to a computer (ADB, file transfer, recovery sideload). Black USB 2.0 port only.</string>
+    <string name="tanix_usb_mode_host_summary">Connect accessories such as keyboards and storage. ADB and recovery over USB are unavailable. Black USB 2.0 port only.</string>
+    <string name="tanix_usb_mode_restart_needed">Restart to apply the new mode</string>
+    <string name="tanix_usb_mode_unavailable">Unavailable on this system</string>
+    <string name="tanix_restart_title">Restart now</string>
+    <string name="tanix_restart_summary">Apply the new USB 2.0 port mode</string>
+
+    <string name="tanix_system_category">System</string>
+    <string name="tanix_root_title">Root access</string>
+    <string name="tanix_root_summary_on">Every app and ADB can run commands as root (su) without asking. Only install apps you trust.</string>
+    <string name="tanix_root_summary_off">Disabled</string>
+
+    <string name="tanix_save_failed">The setting could not be saved.</string>
+
+    <string-array name="tanix_panel_format_entries">
+        <item>@string/tanix_panel_format_24</item>
+        <item>@string/tanix_panel_format_12</item>
+    </string-array>
+    <string-array name="tanix_panel_format_values" translatable="false">
+        <item>24</item>
+        <item>12</item>
+    </string-array>
+
+    <string-array name="tanix_usb_mode_entries">
+        <item>@string/tanix_usb_mode_device</item>
+        <item>@string/tanix_usb_mode_host</item>
+    </string-array>
+    <string-array name="tanix_usb_mode_values" translatable="false">
+        <item>device</item>
+        <item>host</item>
+    </string-array>
+</resources>

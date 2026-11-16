@@ -622,6 +622,15 @@
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>
             </intent-filter>
         </receiver>
+
+        <!-- Tanix W2: USB 2.0 port mode bookkeeping at boot (no-op on other devices) -->
+        <receiver
+            android:name=".device.tanix.TanixBootReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
         <activity
             android:name=".system.ShieldMtpActivity"
             android.configChanges="keyboardHidden|navigation"
