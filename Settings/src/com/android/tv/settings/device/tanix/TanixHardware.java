@@ -88,7 +88,7 @@ public final class TanixHardware {
      * Makes the front panel clock follow Settings > System > Date and time: the explicit 12/24-hour
      * choice, or the locale default when the user has not chosen (same rule as the status clock).
      */
-    static void syncClockFormat(Context context) {
+    public static void syncClockFormat(Context context) {
         String wanted = DateFormat.is24HourFormat(context) ? "24" : "12";
         if (wanted.equals(getProp(PROP_PANEL_FORMAT, "24"))) return;
         if (!setVendorProp(PROP_PANEL_FORMAT, wanted)) {

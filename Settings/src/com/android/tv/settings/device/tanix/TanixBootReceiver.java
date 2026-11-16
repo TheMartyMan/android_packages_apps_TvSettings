@@ -12,8 +12,9 @@ import android.content.Intent;
 /**
  * Tanix W2 housekeeping:
  * - at boot: record the USB 2.0 port mode of this boot and apply the device-mode default;
- * - at boot, on time-format changes (ACTION_TIME_CHANGED, also sent by Date and time when the
- *   24-hour switch changes) and on locale changes: copy the 12/24-hour format to the front panel.
+ * - at boot and on locale changes: copy the 12/24-hour format to the front panel. The Date and
+ *   time switch updates the panel directly (DateTimeFragment), because the implicit
+ *   ACTION_TIME_CHANGED it sends is not delivered to manifest receivers.
  */
 public class TanixBootReceiver extends BroadcastReceiver {
     @Override

@@ -41,6 +41,7 @@ import com.android.settingslib.datetime.ZoneGetter;
 import com.android.tv.settings.R;
 import com.android.tv.settings.RestrictedPreferenceAdapter;
 import com.android.tv.settings.SettingsPreferenceFragment;
+import com.android.tv.settings.device.tanix.TanixHardware;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -238,6 +239,12 @@ public class DateTimeFragment extends SettingsPreferenceFragment implements
         Settings.System.putString(getContext().getContentResolver(),
                 Settings.System.TIME_12_24,
                 use24Hour ? HOURS_24 : HOURS_12);
+        if (TanixHardware.isSupported()) {
+            // The implicit ACTION_TIME_CHANGED sent below does not reach manifest receivers,
+            // so update the front panel clock directly (binder call: off the main thread).
+            final Context app = getContext().getApplicationContext();
+            new Thread(() -> TanixHardware.syncClockFormat(app), "TanixClockFormat").start();
+        }
     }
 
     private void setAutoDateTime(boolean on) {
