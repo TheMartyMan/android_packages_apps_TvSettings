@@ -39,6 +39,9 @@ public final class TanixHardware {
     static final String PROP_PANEL_BLINK = "persist.vendor.tanix.frontpanel.blink";
     static final String PROP_PANEL_FORMAT = "persist.vendor.tanix.frontpanel.format";
 
+    // Mouse right button reported as Back (kernel hid.right_click_back, init.tanix_w2.rc).
+    static final String PROP_MOUSE_BACK = "persist.vendor.tanix.mouse_back";
+
     // Built-in root (device/tanix/mademoiselle/su).
     static final String PROP_ROOT = "persist.sys.tanix.root";
     private static final String ROOT_DAEMON = "/system_ext/bin/tanix_sud";

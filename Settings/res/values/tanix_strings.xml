@@ -14,6 +14,10 @@
     <string name="tanix_panel_blink_title">Blinking colon</string>
     <string name="tanix_panel_blink_summary">Blink the colon between hours and minutes every second</string>
 
+    <string name="tanix_mouse_category">Mouse</string>
+    <string name="tanix_mouse_back_title">Right button goes back</string>
+    <string name="tanix_mouse_back_summary">The right mouse button works like the Back button of the remote</string>
+
     <string name="tanix_usb_category">USB</string>
     <string name="tanix_usb_mode_title">USB 2.0 port mode</string>
     <string name="tanix_usb_mode_device">Device mode</string>

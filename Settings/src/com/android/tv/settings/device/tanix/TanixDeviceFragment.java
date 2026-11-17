@@ -37,6 +37,7 @@ public class TanixDeviceFragment extends SettingsPreferenceFragment
     private static final String KEY_PANEL_ENABLED = "tanix_panel_enabled";
     private static final String KEY_PANEL_BRIGHTNESS = "tanix_panel_brightness";
     private static final String KEY_PANEL_BLINK = "tanix_panel_blink";
+    private static final String KEY_MOUSE_BACK = "tanix_mouse_back";
     private static final String KEY_USB_MODE = "tanix_usb_mode";
     private static final String KEY_ROOT = "tanix_root";
     private static final String KEY_RESTART = "tanix_restart";
@@ -50,6 +51,7 @@ public class TanixDeviceFragment extends SettingsPreferenceFragment
     private TwoStatePreference mPanelEnabled;
     private SeekBarPreference mPanelBrightness;
     private TwoStatePreference mPanelBlink;
+    private TwoStatePreference mMouseBack;
     private ListPreference mUsbMode;
     private TwoStatePreference mRoot;
     private Preference mRestart;
@@ -64,12 +66,13 @@ public class TanixDeviceFragment extends SettingsPreferenceFragment
         mPanelEnabled = findPreference(KEY_PANEL_ENABLED);
         mPanelBrightness = findPreference(KEY_PANEL_BRIGHTNESS);
         mPanelBlink = findPreference(KEY_PANEL_BLINK);
+        mMouseBack = findPreference(KEY_MOUSE_BACK);
         mUsbMode = findPreference(KEY_USB_MODE);
         mRoot = findPreference(KEY_ROOT);
         mRestart = findPreference(KEY_RESTART);
 
         for (Preference p : new Preference[] {mPanelEnabled, mPanelBrightness, mPanelBlink,
-                mUsbMode, mRoot}) {
+                mMouseBack, mUsbMode, mRoot}) {
             p.setOnPreferenceChangeListener(this);
         }
         mRestart.setOnPreferenceClickListener(p -> {
@@ -112,6 +115,8 @@ public class TanixDeviceFragment extends SettingsPreferenceFragment
         mPanelBrightness.setValue(Math.max(0, Math.min(7, level)) + 1);
         mPanelBlink.setChecked(!"0".equals(
                 TanixHardware.getProp(TanixHardware.PROP_PANEL_BLINK, "1")));
+        mMouseBack.setChecked(!"0".equals(
+                TanixHardware.getProp(TanixHardware.PROP_MOUSE_BACK, "1")));
     }
 
     private void updateRoot() {
@@ -160,6 +165,9 @@ public class TanixDeviceFragment extends SettingsPreferenceFragment
                 return true;
             case KEY_PANEL_BLINK:
                 writeVendorProp(TanixHardware.PROP_PANEL_BLINK, (Boolean) newValue ? "1" : "0");
+                return true;
+            case KEY_MOUSE_BACK:
+                writeVendorProp(TanixHardware.PROP_MOUSE_BACK, (Boolean) newValue ? "1" : "0");
                 return true;
             case KEY_USB_MODE:
                 writeUsbMode(USB_DEVICE.equals(newValue)

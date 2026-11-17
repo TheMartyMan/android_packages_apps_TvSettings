@@ -38,6 +38,17 @@
     </PreferenceCategory>
 
     <PreferenceCategory
+        android:key="tanix_mouse_category"
+        android:title="@string/tanix_mouse_category">
+
+        <com.android.tv.settings.widget.SwitchWithSoundPreference
+            android:key="tanix_mouse_back"
+            android:persistent="false"
+            android:summary="@string/tanix_mouse_back_summary"
+            android:title="@string/tanix_mouse_back_title" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
         android:key="tanix_usb_category"
         android:title="@string/tanix_usb_category">
 
