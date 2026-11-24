@@ -199,8 +199,7 @@ public class TanixDeviceFragment extends SettingsPreferenceFragment
         final Context app = requireContext().getApplicationContext();
         mUsbMode.setEnabled(false);
         mExecutor.execute(() -> {
-            final boolean ok = TanixHardware.setUsbMode(mode);
-            if (ok) TanixHardware.rememberUsbUserChoice(app);
+            final boolean ok = TanixHardware.setWantedUsbMode(app, mode);
             final int now = TanixHardware.getUsbMode();
             final int boot = TanixHardware.getUsbBootMode(app);
             mHandler.post(() -> {

@@ -25,6 +25,7 @@
     <string name="tanix_usb_mode_device_summary">Connect the box to a computer (ADB, file transfer, recovery sideload). Black USB 2.0 port only.</string>
     <string name="tanix_usb_mode_host_summary">Connect accessories such as keyboards and storage. ADB and recovery over USB are unavailable. Black USB 2.0 port only.</string>
     <string name="tanix_usb_mode_restart_needed">Restart to apply the new mode</string>
+    <string name="tanix_usb_mode_restored">USB 2.0 port: %1$s applies after a restart.</string>
     <string name="tanix_usb_mode_unavailable">Unavailable on this system</string>
     <string name="tanix_restart_title">Restart now</string>
     <string name="tanix_restart_summary">Apply the new USB 2.0 port mode</string>
