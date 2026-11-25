@@ -31,8 +31,8 @@
     <string name="tanix_restart_summary">Apply the new USB 2.0 port mode</string>
 
     <string name="tanix_system_category">System</string>
-    <string name="tanix_root_title">Root access</string>
-    <string name="tanix_root_summary_on">Every app and ADB can run commands as root (su) without asking. Only install apps you trust.</string>
+    <string name="tanix_root_title">Root access for apps</string>
+    <string name="tanix_root_summary_on">Every app can run commands as root (su) without asking. Only install apps you trust.</string>
     <string name="tanix_root_summary_off">Disabled</string>
 
     <string name="tanix_save_failed">The setting could not be saved.</string>
