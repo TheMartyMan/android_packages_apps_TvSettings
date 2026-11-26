@@ -120,7 +120,7 @@ public class TanixDeviceFragment extends SettingsPreferenceFragment
     }
 
     private void updateRoot() {
-        mRoot.setChecked(!"0".equals(TanixHardware.getProp(TanixHardware.PROP_ROOT, "1")));
+        mRoot.setChecked("1".equals(TanixHardware.getProp(TanixHardware.PROP_ROOT, "0")));
     }
 
     /** The U-Boot environment is read through a binder call: off the main thread. */
